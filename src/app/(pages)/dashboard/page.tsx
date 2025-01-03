@@ -1,10 +1,10 @@
 import CollapseComponents from "@/components/ui/collapse-components";
 import { HeadingText } from "@/components/ui/heading-text";
-import LocalTime from "./time";
-import { BentoGrid, BentoGroup, BentoGridItem } from "./bento";
-import Birthday from "./birthday";
-import Discord from "./discord";
-import Duolingo from "./duolingo";
+import LocalTime from "./_components/time/time";
+import { BentoGrid, BentoGroup, BentoGridItem } from "./_components/bento";
+import Birthday from "./_components/birthday/birthday";
+import Discord from "./_components/discord/discord";
+import Duolingo from "./_components/duolingo/duolingo";
 
 export default function DashboardPage() {
     return (
