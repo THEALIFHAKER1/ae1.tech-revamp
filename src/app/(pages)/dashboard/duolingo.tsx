@@ -17,7 +17,7 @@ export default function Duolingo() {
                     <SectionTitle> Duolingo Activity </SectionTitle>
                 </CardTitle>
             </CardHeader>
-            <CardContent className="grid max-h-max gap-2"></CardContent>
+            <CardContent className="grid max-h-64 overflow-auto gap-2"></CardContent>
         </Card>
     );
 }
