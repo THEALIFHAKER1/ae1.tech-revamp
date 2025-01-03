@@ -1,26 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { Progress } from "@/components/ui/progress";
-export function calculateProgress(
-    startTimestamp: number,
-    endTimestamp: number
-): number {
-    const currentDateTimestamp: number = new Date().getTime();
-
-    if (startTimestamp > endTimestamp) {
-        throw new Error(
-            "Invalid timestamps: startTimestamp should be less than endTimestamp."
-        );
-    }
-
-    const totalDuration: number = endTimestamp - startTimestamp;
-    const elapsedTime: number = currentDateTimestamp - startTimestamp;
-    let progress: number = (elapsedTime / totalDuration) * 100;
-    progress = Math.min(100, Math.max(0, progress));
-
-    return parseFloat(progress.toFixed(2));
-}
+import { calculateProgress } from "./time-lib";
+import { useState, useEffect } from "react";
 
 interface SpotifyBarProps {
     start: number;
@@ -28,11 +10,9 @@ interface SpotifyBarProps {
 }
 
 export function ProgressBar({ start, end }: SpotifyBarProps) {
-    const [progress, setProgress] = React.useState(
-        calculateProgress(start, end)
-    );
+    const [progress, setProgress] = useState(calculateProgress(start, end));
 
-    React.useEffect(() => {
+    useEffect(() => {
         const intervalId = setInterval(() => {
             setProgress(calculateProgress(start, end));
         }, 1000);
