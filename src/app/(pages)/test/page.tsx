@@ -1,18 +1,20 @@
 "use client";
+import EntryImage from "@/components/ui/entry-image";
+import HeroPicture from "@/assets/heroProfile.svg";
 
-import { GetDiscordLanyard } from "@/app/api/get-discord-lanyard";
-
-export default function DiscordStatus() {
-    const { loading, status } = GetDiscordLanyard();
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
+export default function Home() {
     return (
-        <div>
-            <h1>Discord Status</h1>
-            <pre>{JSON.stringify(status, null, 4)}</pre>;
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <EntryImage
+                src={HeroPicture}
+                alt="Beautiful Image"
+                width={600}
+                height={400}
+                priority
+            />
+            <p className="mt-4 text-lg text-gray-600">
+                A beautiful fade-in effect!
+            </p>
         </div>
     );
 }
