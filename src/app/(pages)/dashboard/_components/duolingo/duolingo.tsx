@@ -2,7 +2,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { SectionTitle } from "@/components/ui/text";
 import Image from "next/image";
 import DuolingoImage from "@/assets/duolingo-family.png";
-export default function Duolingo() {
+import Statistics from "./statistics";
+import Biodata from "./biodata";
+import getDuolingoUserInfo from "@/app/api/get-duolingo-userinfo";
+export default async function Duolingo() {
+    const data = await getDuolingoUserInfo();
     return (
         <Card className="relative h-full  w-full overflow-hidden text-white bg-[#58cc02] backdrop-blur-sm backdrop-saturate-150 ">
             <Image
@@ -17,7 +21,10 @@ export default function Duolingo() {
                     <SectionTitle> Duolingo Activity </SectionTitle>
                 </CardTitle>
             </CardHeader>
-            <CardContent className="grid max-h-64 overflow-auto gap-2"></CardContent>
+            <CardContent className="grid max-h-max gap-2">
+                <Biodata data={data} />
+                <Statistics data={data} />
+            </CardContent>
         </Card>
     );
 }
